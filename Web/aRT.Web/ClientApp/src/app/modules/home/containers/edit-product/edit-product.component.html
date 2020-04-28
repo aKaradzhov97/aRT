@@ -1,0 +1,6 @@
+<section class="wrapper">
+  <app-edit-product-form
+    (formSubmit)="onSubmit($event)"
+    [product]="product$ | async">
+  </app-edit-product-form>
+</section>

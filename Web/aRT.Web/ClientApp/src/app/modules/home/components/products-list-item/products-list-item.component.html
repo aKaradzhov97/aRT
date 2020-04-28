@@ -1,0 +1,12 @@
+<a routerLink="/details/{{product._id}}" class="product-item">
+  <section class="image-container">
+    <img class="image" [src]="product.image" alt="Photo of a product">
+  </section>
+  <section class="product-main-info">
+    <h6>{{product.name}}</h6>
+    <h6>{{product.price}} €</h6>
+  </section>
+  <section class="product-more-info">
+    <p>{{product.description}}</p>
+  </section>
+</a>

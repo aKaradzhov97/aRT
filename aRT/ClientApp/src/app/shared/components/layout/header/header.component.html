@@ -1,0 +1,33 @@
+<mat-toolbar color="primary">
+  <section class="wrapper">
+    <nav class="nav-main left">
+      <ul>
+        <li>
+          <a routerLink="/" title="My profile">
+            <i class="fas fa-user-circle"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div class="site-branding">
+      <a routerLink="/">FooTR</a>
+    </div>
+    <button id="toggle" mat-icon-button (click)="onToggleSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <nav class="nav-main right">
+      <ul>
+        <li>
+          <a routerLink="/" title="Shopping bag">
+            <i class="fas fa-shopping-basket"></i>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/create" title="Create product">
+            <i class="fas fa-plus-circle"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </section>
+</mat-toolbar>

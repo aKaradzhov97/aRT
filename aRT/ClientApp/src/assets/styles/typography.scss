@@ -1,0 +1,97 @@
+html {
+  font: 10px/1.5 "Montserrat", sans-serif;
+  scroll-behavior: smooth;
+  font-weight: lighter;
+}
+
+body, form, table {
+  font: inherit;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.2;
+  margin: 0.75rem 0 0.5rem 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 2.2rem;
+}
+
+h2 {
+  font-size: 2.0rem;
+}
+
+h3 {
+  font-size: 1.8rem;
+}
+
+h4 {
+  font-size: 1.6rem;
+}
+
+h5 {
+  font-size: 1.4rem;
+}
+
+h6 {
+  font-size: 1.2rem;
+}
+
+p {
+  margin: 0;
+  padding-bottom: 1.5rem;
+}
+
+ul, ol {
+  padding: 0;
+  margin: 0 0 1.5rem 1.5rem;
+}
+
+ul, ol {
+  ul {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  li {
+    list-style-position: inside;
+    list-style-type: circle;
+  }
+}
+
+hr {
+  margin: 2rem 0;
+}
+
+/* RESPONSIVE */
+
+@media screen and (min-width: 500px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 1800px) {
+  html {
+    font-size: 18px;
+  }
+}

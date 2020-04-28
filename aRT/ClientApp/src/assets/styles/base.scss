@@ -1,0 +1,21 @@
+body {
+  background: var(--main-color-bg);
+
+  .wrapper {
+    max-width: 60rem;
+    margin: 0 auto;
+  }
+
+  .main-section {
+    display: flex;
+    justify-content: center;
+  }
+
+  .container {
+    display: block;
+    background: #FFF;
+    border: 1px solid #E6E6E6;
+    border-radius: 3px;
+    padding: 1rem;
+  }
+}

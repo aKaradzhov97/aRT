@@ -1,3 +1,5 @@
+@import "./responsive";
+
 html {
   font: 10px/1.5 "Montserrat", sans-serif;
   scroll-behavior: smooth;
@@ -71,27 +73,32 @@ hr {
 }
 
 /* RESPONSIVE */
-
-@media screen and (min-width: 500px) {
+@include media-breakpoint-sm-up {
   html {
     font-size: 12px;
   }
 }
 
-@media screen and (min-width: 800px) {
+@include media-breakpoint-md-up {
   html {
     font-size: 14px;
   }
 }
 
-@media screen and (min-width: 1300px) {
+@include media-breakpoint-lg-up {
   html {
     font-size: 16px;
   }
 }
 
-@media screen and (min-width: 1800px) {
+@include media-breakpoint-xl-up {
   html {
     font-size: 18px;
+  }
+}
+
+@include media-breakpoint-xxl-up {
+  html {
+    font-size: 21px;
   }
 }

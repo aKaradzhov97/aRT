@@ -24,6 +24,10 @@
         {
         }
 
+        public DbSet<Product> Products { get; set; }
+
+        public DbSet<UserProduct> UserProducts { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)

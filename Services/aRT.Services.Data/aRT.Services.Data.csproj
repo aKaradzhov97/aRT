@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\aRT.Data.Common\aRT.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\aRT.Data.Models\aRT.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Web\aRT.Web.ViewModels\aRT.Web.ViewModels.csproj" />
     <ProjectReference Include="..\aRT.Services.Mapping\aRT.Services.Mapping.csproj" />
   </ItemGroup>
 

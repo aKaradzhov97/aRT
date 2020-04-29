@@ -29,7 +29,7 @@ export function reducer(state = initialState,
         (entities: { [id: number]: Product }, product: Product) => {
           return {
             ...entities,
-            [product._id]: product,
+            [product.id]: product,
           };
         },
         {
@@ -66,7 +66,7 @@ export function reducer(state = initialState,
       const product: Product = action.payload;
       const entities = {
         ...state.entities,
-        [product._id]: product
+        [product.id]: product
       };
 
       return {
@@ -92,10 +92,10 @@ export function reducer(state = initialState,
       // the deleted product as 'REMOVED' and the second argument
       // contains the remaining properties of that destructuring.
       // In other words: immutable way to remove a property from an object.
-      // const {[product._id]: removed, ...entities } = state.entities;
+      // const {[product.id]: removed, ...entities } = state.entities;
 
       const entities = state.entities;
-      delete entities[product._id];
+      delete entities[product.id];
 
       return {
         ...state,

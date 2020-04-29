@@ -41,13 +41,13 @@ export class ProductService {
 
   updateProduct(payload: Product): Observable<Product> {
     return this.http
-      .put<Product>(`${UPDATE_ONE_URL}${payload._id}`, payload)
+      .put<Product>(`${UPDATE_ONE_URL}${payload.id}`, payload)
       .pipe(catchError((error: any) => Observable.throw(error.json())));
   }
 
   deleteProduct(payload: Product): Observable<Product> {
     return this.http
-      .delete<any>(`${DELETE_ONE_URL}${payload._id}`)
+      .delete<any>(`${DELETE_ONE_URL}${payload.id}`)
       .pipe(catchError((error: any) => Observable.throw(error.json())));
   }
 }

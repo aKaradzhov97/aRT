@@ -28,7 +28,7 @@ describe('Products Actions', () => {
       it('should create an action', () => {
         const payload = [
           {
-            _id: '1',
+            id: '1',
             name: 'Productica',
             image: 'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto/uoxteud0rv2d2wml9xkl/air-force-1-07-herrenschuh-3nGnlt.jpg',
             description: 'Awesome description here!',
@@ -36,7 +36,7 @@ describe('Products Actions', () => {
             created_on: '2020-04-24T13:06:49.517Z',
           },
           {
-            _id: '2',
+            id: '2',
             name: 'Productica 2',
             image: 'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto/uoxteud0rv2d2wml9xkl/air-force-1-07-herrenschuh-3nGnlt.jpg',
             description: 'amazing description here!',

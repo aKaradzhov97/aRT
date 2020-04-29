@@ -52,7 +52,7 @@ export class ProductsEffect {
       ofType(productActions.CREATE_PRODUCT_SUCCESS),
       map((action: productActions.CreateProductSuccess) => action.payload),
       map((product: Product) => new fromRoot.Go({
-        path: ['/products', product._id]
+        path: ['/products', product.id]
       }))
     );
 

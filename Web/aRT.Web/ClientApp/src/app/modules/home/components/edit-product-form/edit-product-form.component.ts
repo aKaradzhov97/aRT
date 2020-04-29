@@ -25,7 +25,7 @@ export class EditProductFormComponent implements OnInit {
 
   onSubmit(): void {
     const data = this.editProductForm.value;
-    data['_id'] = this.product._id;
+    data['id'] = this.product.id;
 
     this.formSubmit.emit(data);
   }

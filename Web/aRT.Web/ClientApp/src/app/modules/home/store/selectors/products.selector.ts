@@ -28,7 +28,7 @@ export const getSelectedProduct = createSelector(
 );
 
 export const getAllProducts = createSelector(getProductsEntities, entities => {
-  return Object.keys(entities).map(_id => entities[_id]);
+  return Object.keys(entities).map(id => entities[id]);
 });
 
 export const getProductsLoaded = createSelector(

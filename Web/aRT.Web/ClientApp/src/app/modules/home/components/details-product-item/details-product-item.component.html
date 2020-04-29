@@ -7,7 +7,7 @@
       <h6>{{product.price}} €</h6>
       <p>{{product.description}}</p>
     <section>
-      <a routerLink="/edit/{{product._id}}">Edit product</a>
+      <a routerLink="/edit/{{product.id}}">Edit product</a>
     </section>
     <section>
       <button mat-button mat-raised-button (click)="removeProduct()">Remove product</button>

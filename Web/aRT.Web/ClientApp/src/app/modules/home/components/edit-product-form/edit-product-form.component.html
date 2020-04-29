@@ -17,10 +17,15 @@
     </mat-form-field>
 
     <mat-form-field class="form-label">
+      <mat-label>Quantity</mat-label>
+      <input type="number" matInput placeholder="Ex. 100..." formControlName="quantity">
+    </mat-form-field>
+
+    <mat-form-field class="form-label">
       <mat-label>Price</mat-label>
       <input type="number" matInput placeholder="Ex. 120 $..." formControlName="price">
     </mat-form-field>
 
-    <button type="submit" mat-raised-button color="primary">Save!</button>
+    <button type="submit" mat-raised-button color="primary">Save changes!</button>
   </form>
 </section>

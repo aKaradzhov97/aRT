@@ -22,6 +22,14 @@
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+            this.Database.EnsureCreated();
+        }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseMySQL("server=localhost;port=3306;database=aRT;user=root;password=;");
+            }
         }
 
         public DbSet<Product> Products { get; set; }

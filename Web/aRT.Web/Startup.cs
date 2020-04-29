@@ -33,7 +33,7 @@ namespace aRT
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(
-               options => options.UseSqlServer(this.configuration.GetConnectionString("DefaultConnection")));
+               options => options.UseMySQL(this.configuration.GetConnectionString("DefaultConnection")));
 
             services
                 .AddIdentity<ApplicationUser, ApplicationRole>(options =>
@@ -77,7 +77,6 @@ namespace aRT
             using (var serviceScope = app.ApplicationServices.CreateScope())
             {
                 var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-                dbContext.Database.Migrate();
 
                 new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
             }

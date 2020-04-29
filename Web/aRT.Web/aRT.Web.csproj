@@ -28,7 +28,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\..\Data\aRT.Data\aRT.Data.csproj" />
+    <ProjectReference Include="..\..\Services\aRT.Services.Data\aRT.Services.Data.csproj" />
+    <ProjectReference Include="..\aRT.Web.ViewModels\aRT.Web.ViewModels.csproj" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

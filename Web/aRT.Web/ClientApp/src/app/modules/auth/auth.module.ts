@@ -41,5 +41,5 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
     // fromGuards.guards,
   ]
 })
-export class HomeModule {
+export class AuthModule {
 }

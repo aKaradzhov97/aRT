@@ -45,7 +45,7 @@
             }
 
             var user = await this.userManager.GetUserAsync(this.User); // TO DO AddProduct(user.Id, input)!!!!!
-            var data = await this.productsService.AddProduct("250ea788-21d1-4ecc-ba4a-e038430bb0d4", input);
+            var data = await this.productsService.AddProduct("28a00a1e-3ce9-497d-94e8-caf7bb9eb690", input);
             return this.CreatedAtAction("All", new { Message = $"{data.Name} with {data.Price} created!", data });
         }
     }

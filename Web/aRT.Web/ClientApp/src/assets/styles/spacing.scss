@@ -1,0 +1,60 @@
+﻿@import './responsive';
+@import './functions';
+
+$count: 5;
+
+$spacing-base: 5px;
+
+@mixin padding-dynamic {
+  @for $i from 0 through $count {
+    .p-#{$i} {
+      padding: to-rem($spacing-base * $i);
+    }
+
+    @include media-breakpoint-sm-up {
+      .p-sm-#{$i} {
+        padding: to-rem($spacing-base * $i);
+      }
+    }
+
+    @include media-breakpoint-md-up {
+      .p-md-#{$i} {
+        padding: to-rem($spacing-base * $i);
+      }
+    }
+
+    @include media-breakpoint-lg-up {
+      .p-lg-#{$i} {
+        padding: to-rem($spacing-base * $i);
+      }
+    }
+  }
+}
+@include padding-dynamic;
+
+@mixin margin-dynamic {
+  @for $i from 0 through $count {
+    .m-#{$i} {
+      margin: to-rem($spacing-base * $i);
+    }
+
+    @include media-breakpoint-sm-up {
+      .m-sm-#{$i} {
+        margin: to-rem($spacing-base * $i);
+      }
+    }
+
+    @include media-breakpoint-md-up {
+      .m-md-#{$i} {
+        margin: to-rem($spacing-base * $i);
+      }
+    }
+
+    @include media-breakpoint-lg-up {
+      .m-lg-#{$i} {
+        margin: to-rem($spacing-base * $i);
+      }
+    }
+  }
+}
+@include margin-dynamic;

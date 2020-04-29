@@ -71,8 +71,14 @@
     cursor: pointer;
   }
 
-  @media screen and (min-width: 500px) {
+  @media screen and (min-width: 501px) {
     #toggle {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    ul > li > a {
       display: none;
     }
   }

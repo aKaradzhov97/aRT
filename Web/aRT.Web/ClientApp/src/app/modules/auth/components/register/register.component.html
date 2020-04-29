@@ -1,1 +1,31 @@
-<p>register works!</p>
+<section class="container">
+  <h5>Register:</h5>
+  <form class="example-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="form-label">
+      <mat-label>Username</mat-label>
+      <input type="text" matInput placeholder="Your username.." formControlName="username">
+    </mat-form-field>
+
+    <mat-form-field class="form-label">
+      <mat-label>Password</mat-label>
+      <input type="password" matInput placeholder="Your password.." formControlName="password">
+    </mat-form-field>
+
+    <mat-form-field class="form-label">
+      <mat-label>Repeat password</mat-label>
+      <input type="password" matInput placeholder="Repeat password.." formControlName="repeatPassword">
+    </mat-form-field>
+
+    <mat-form-field class="form-label">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput placeholder="Email.." formControlName="email">
+    </mat-form-field>
+
+    <mat-form-field class="form-label">
+      <mat-label>Phone number</mat-label>
+      <input type="text" matInput placeholder="Phone number.." formControlName="phone">
+    </mat-form-field>
+
+    <button type="submit" mat-raised-button color="primary">Register!</button>
+  </form>
+</section>

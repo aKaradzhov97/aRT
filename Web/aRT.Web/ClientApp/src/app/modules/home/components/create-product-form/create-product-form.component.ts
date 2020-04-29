@@ -22,13 +22,13 @@ export class CreateProductFormComponent implements OnInit {
     this.formSubmit.emit(this.createProductForm.value);
   }
 
-  ngOnInit():void {
+  ngOnInit(): void {
     this.createProductForm = new FormGroup({
-      'name': new FormControl('', Validators.required),
-      'image': new FormControl('', Validators.required),
-      'description': new FormControl('', Validators.required),
-      'quantity': new FormControl('',[ Validators.min(1), Validators.required ]),
-      'price': new FormControl('', Validators.required),
+      name: new FormControl('', Validators.required),
+      image: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required),
+      quantity: new FormControl('',[ Validators.min(1), Validators.required ]),
+      price: new FormControl('', Validators.required),
     });
   }
 }

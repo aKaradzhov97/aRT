@@ -1,6 +1,6 @@
 <section class="container">
   <h5>Create new product:</h5>
-  <form class="example-form" #form="ngForm" [formGroup]="createProductForm" (ngSubmit)="onSubmit()">
+  <form class="example-form" [formGroup]="createProductForm" (ngSubmit)="onSubmit()">
     <mat-form-field class="form-label">
       <mat-label>Name</mat-label>
       <input type="text" matInput placeholder="Ex. Nike Air Fo..." formControlName="name">

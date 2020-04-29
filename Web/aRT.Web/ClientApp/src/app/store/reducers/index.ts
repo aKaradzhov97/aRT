@@ -10,7 +10,7 @@ export interface RouterStateUrl {
 }
 
 export interface State {
-  routerReducer: fromRouter.RouterReducerState<RouterStateUrl>
+  routerReducer: fromRouter.RouterReducerState<RouterStateUrl>;
 }
 
 export const reducers: ActionReducerMap<State> = {
@@ -27,7 +27,7 @@ export class CustomSerializer
 
     let state: ActivatedRouteSnapshot = routerState.root;
 
-    while(state.firstChild) {
+    while (state.firstChild) {
       state = state.firstChild;
     }
 

@@ -19,7 +19,7 @@
             this.repositoryProduct = repositoryProduct;
         }
 
-        public async Task<ProductsInputViewModel> AddProduct(string userId, ProductsInputViewModel product)
+        public async Task<Product> AddProduct(string userId, ProductsInputViewModel product)
         {
             var currentProduct = await this.repositoryProduct.All()
                 .FirstOrDefaultAsync(x => x.Name == product.Name && x.Price == product.Price);
@@ -41,7 +41,7 @@
                 await this.repositoryProduct.SaveChangesAsync();
             }
 
-            return product;
+            return currentProduct;
         }
 
         public async Task<IEnumerable<ProductsInputViewModel>> GetAllProducts()

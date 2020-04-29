@@ -27,26 +27,26 @@
         [HttpGet("All")]
         public async Task<ActionResult<IEnumerable<ProductsInputViewModel>>> All()
         {
-            var listProduct = await this.productsService.GetAllProducts();
-            if (listProduct.Count() == 0)
+            var data = await this.productsService.GetAllProducts();
+            if (data.Count() == 0)
             {
                 return this.NotFound("You dont have products!");
             }
 
-            return this.Created("All", new { Message = "All Product Finded...", listProduct });
+            return this.Created("All", new { Message = "All Product Finded...", data });
         }
 
         [HttpPost("Create")]
-        public async Task<ActionResult> Create(ProductsInputViewModel product)
+        public async Task<ActionResult> Create(ProductsInputViewModel input)
         {
             if (!this.ModelState.IsValid)
             {
                 return this.BadRequest();
             }
 
-            var user = await this.userManager.GetUserAsync(this.User);
-            await this.productsService.AddProduct("250ea788-21d1-4ecc-ba4a-e038430bb0d4", product);
-            return this.CreatedAtAction("All", new { Message = $"{product.Name} with {product.Price} created!" });
+            var user = await this.userManager.GetUserAsync(this.User); // TO DO AddProduct(user.Id, input)!!!!!
+            var data = await this.productsService.AddProduct("250ea788-21d1-4ecc-ba4a-e038430bb0d4", input);
+            return this.CreatedAtAction("All", new { Message = $"{data.Name} with {data.Price} created!", data });
         }
     }
 }

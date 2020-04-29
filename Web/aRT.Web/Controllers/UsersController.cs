@@ -9,7 +9,7 @@
     using Microsoft.AspNetCore.Mvc;
 
     [ApiController]
-    [Route("[controller]")]
+    [Route("[auth]")]
     public class UsersController : ControllerBase
     {
         private readonly IUsersService usersService;
@@ -24,12 +24,6 @@
             this.usersService = usersService;
             this.signInManager = signInManager;
             this.userManager = userManager;
-        }
-
-        [HttpGet("Login")]
-        public ActionResult Login()
-        {
-            return this.Content("Find Login");
         }
 
         [HttpPost("Login")]
@@ -48,12 +42,6 @@
             }
 
             return this.Accepted("Login", new { Message = $"{login.Username} is login!" });
-        }
-
-        [HttpGet("Register")]
-        public ActionResult Register()
-        {
-            return this.Content("Find Register");
         }
 
         [HttpPost("Register")]
@@ -93,7 +81,6 @@
             {
                 return this.Created("Register", new { Message = $"User {register.Username} is NOT create!" });
             }
-
         }
     }
 }

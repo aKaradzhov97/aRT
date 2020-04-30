@@ -25,17 +25,18 @@ export class EditProductFormComponent implements OnInit {
 
   onSubmit(): void {
     const data = this.editProductForm.value;
-    data['id'] = this.product.id;
+    data.id = this.product.id;
 
     this.formSubmit.emit(data);
   }
 
   ngOnInit(): void {
     this.editProductForm = new FormGroup({
-      'name': new FormControl('', Validators.required),
-      'image': new FormControl('', Validators.required),
-      'description': new FormControl('', Validators.required),
-      'price': new FormControl('', Validators.required),
+      name: new FormControl('', Validators.required),
+      image: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required),
+      quantity: new FormControl('', Validators.required),
+      price: new FormControl('', Validators.required),
     });
 
     this.editProductForm.patchValue(this.product);

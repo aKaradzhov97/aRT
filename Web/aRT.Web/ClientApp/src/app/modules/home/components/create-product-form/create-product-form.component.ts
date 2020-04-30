@@ -27,7 +27,7 @@ export class CreateProductFormComponent implements OnInit {
       name: new FormControl('', Validators.required),
       image: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
-      quantity: new FormControl('',[ Validators.min(1), Validators.required ]),
+      quantity: new FormControl('', [ Validators.min(1), Validators.required ]),
       price: new FormControl('', Validators.required),
     });
   }

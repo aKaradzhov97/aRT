@@ -35,7 +35,7 @@ namespace aRT.Web.Controllers
                 return this.NotFound("You dont have products!");
             }
 
-            return this.Created("All", new {Message = "All Product Finded...", data});
+            return this.Created("All", new { Message = "All Product Finded...", data });
         }
 
         [HttpPost("Create")]

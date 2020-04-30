@@ -357,3 +357,6 @@ MigrationBackup/
 appsettings.Production.json
 *.min.css
 *.min.js
+
+# Custom Connection ignores
+*appsettings.json

@@ -2,7 +2,6 @@
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
-
     using aRT.Data.Models;
     using aRT.Web.ViewModels.Products;
 
@@ -11,5 +10,7 @@
         Task<IEnumerable<ProductsInputViewModel>> GetAllProducts();
 
         Task<Product> AddProduct(string userId, ProductsInputViewModel product);
+
+        Task<Product> EditProduct(ProductsInputViewModel product);
     }
 }

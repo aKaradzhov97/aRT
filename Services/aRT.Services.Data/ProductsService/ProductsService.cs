@@ -3,7 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-
     using aRT.Data.Common.Repositories;
     using aRT.Data.Models;
     using aRT.Services.Mapping;
@@ -35,6 +34,32 @@
                     Price = product.Price,
                     Created_On = DateTime.UtcNow,
                     UserId = userId,
+                };
+
+                await this.repositoryProduct.AddAsync(currentProduct);
+                await this.repositoryProduct.SaveChangesAsync();
+            }
+
+            return currentProduct;
+        }
+
+        // TO DO add and userId (string userId, ProductsInputViewModel product)
+        public async Task<Product> EditProduct(ProductsInputViewModel product)
+        {
+            var currentProduct = await this.repositoryProduct.All().FirstOrDefaultAsync(x => x.Id == product.Id);
+
+            if (currentProduct != null)
+            {
+                currentProduct = new Product
+                {
+                    // TO DO add and userId(user.id);
+                    Id = product.Id,
+                    Name = product.Name,
+                    Description = product.Description,
+                    Image = product.Image,
+                    Price = product.Price,
+                    Quantity = product.Quantity,
+                    Created_On = DateTime.UtcNow,
                 };
 
                 await this.repositoryProduct.AddAsync(currentProduct);

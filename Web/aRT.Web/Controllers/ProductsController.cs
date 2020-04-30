@@ -1,4 +1,6 @@
-﻿namespace aRT.Web.Controllers
+﻿using Renci.SshNet.Messages;
+
+namespace aRT.Web.Controllers
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -33,7 +35,7 @@
                 return this.NotFound("You dont have products!");
             }
 
-            return this.Created("All", new { Message = "All Product Finded...", data });
+            return this.Created("All", new {Message = "All Product Finded...", data});
         }
 
         [HttpPost("Create")]
@@ -46,7 +48,23 @@
 
             var user = await this.userManager.GetUserAsync(this.User); // TO DO AddProduct(user.Id, input)!!!!!
             var data = await this.productsService.AddProduct("28a00a1e-3ce9-497d-94e8-caf7bb9eb690", input);
-            return this.CreatedAtAction("All", new { Message = $"{data.Name} with {data.Price} created!", data });
+            return this.CreatedAtAction("All",
+                new { Message = $"{data.Name} with  price {data.Price} and {data.Quantity} created!", data });
+        }
+
+        [HttpPut("Update")]
+        public async Task<ActionResult> Edit(ProductsInputViewModel edit)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.BadRequest();
+            }
+
+            var user = await this.userManager
+                .GetUserAsync(this.User); // TO DO LOOK ProductsService and add userId EditProduct(user.id, edit);
+            var data = await this.productsService.EditProduct(edit);
+            return this.CreatedAtAction("All",
+                new { Message = $"{data.Name} with price {data.Price} and {data.Quantity} changed!", data });
         }
     }
 }

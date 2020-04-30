@@ -11,27 +11,27 @@ import {User} from '../../../../shared/models/user.model';
 // Selectors
 export const getUserState = createSelector(
   fromFeature.getUsersState,
-  (state: fromFeature.UsersState) => state.users
+  (state: fromFeature.UserState) => state.user
 );
 
-export const getUsersEntities = createSelector(
+export const getUserEntity = createSelector(
   getUserState,
-  fromUsers.getUsersEntities
+  fromUsers.getUserEntity
 );
 
-export const getLoggedInUser = createSelector(
-  getUsersEntities,
+export const getSelectedUser = createSelector(
+  getUserEntity,
   fromRoot.getRouterState,
-  (entities, router): User => {
-    return router.state && entities[router.state.params.userId];
+  (user, router): User => {
+    return router.state && user[router.state.params.userId];
   }
 );
 
 export const getUserLoaded = createSelector(
   getUserState,
-  fromUsers.getUsersLoaded
+  fromUsers.getUserLoaded
 );
 export const getUserLoading = createSelector(
   getUserState,
-  fromUsers.getUsersLoading
+  fromUsers.getUserLoading
 );

@@ -14,7 +14,7 @@ export const initialState: ProductState = {
 };
 
 export function reducer(state = initialState,
-                        action: fromProducts.ProductsAction,): ProductState {
+                        action: fromProducts.ProductsAction): ProductState {
   switch (action.type) {
     case fromProducts.LOAD_PRODUCTS: {
       return {

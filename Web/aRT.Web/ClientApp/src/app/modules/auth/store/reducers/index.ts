@@ -2,14 +2,14 @@ import {ActionReducerMap, createFeatureSelector} from '@ngrx/store';
 
 import * as fromUsers from './users.reducer';
 
-export interface UsersState {
-  users: fromUsers.UserState;
+export interface UserState {
+  user: fromUsers.UserState;
 }
 
-export const reducers: ActionReducerMap<UsersState> = {
-  users: fromUsers.reducer,
+export const reducers: ActionReducerMap<UserState> = {
+  user: fromUsers.reducer,
 };
 
-export const getUsersState = createFeatureSelector<UsersState>(
-  'users'
+export const getUsersState = createFeatureSelector<UserState>(
+  'user'
 );

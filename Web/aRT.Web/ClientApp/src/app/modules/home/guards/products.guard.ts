@@ -16,7 +16,7 @@ export class ProductsGuard implements CanActivate {
       .pipe(
         switchMap(() => of(true)),
         catchError(() => of(false)),
-      )
+      );
   }
 
   checkStore(): Observable<boolean> {
@@ -29,7 +29,7 @@ export class ProductsGuard implements CanActivate {
         }),
         filter((loaded: boolean) => loaded),
         take(1),
-      )
+      );
     // Take will automatically unsubscribe here from the observable.
   }
 }

@@ -44,7 +44,7 @@
         }
 
         // TO DO add and userId (string userId, ProductsInputViewModel product)
-        public async Task<Product> EditProduct(ProductsInputViewModel product)
+        public async Task<Product> EditProduct(string userId, ProductsInputViewModel product)
         {
             var currentProduct = await this.repositoryProduct.All().FirstOrDefaultAsync(x => x.Id == product.Id);
 
@@ -52,7 +52,6 @@
             {
                 currentProduct = new Product
                 {
-                    // TO DO add and userId(user.id);
                     Id = product.Id,
                     Name = product.Name,
                     Description = product.Description,
@@ -60,6 +59,7 @@
                     Price = product.Price,
                     Quantity = product.Quantity,
                     Created_On = DateTime.UtcNow,
+                    UserId = userId,
                 };
 
                 await this.repositoryProduct.AddAsync(currentProduct);

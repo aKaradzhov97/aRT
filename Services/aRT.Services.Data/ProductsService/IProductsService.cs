@@ -11,6 +11,6 @@
 
         Task<Product> AddProduct(string userId, ProductsInputViewModel product);
 
-        Task<Product> EditProduct(ProductsInputViewModel product);
+        Task<Product> EditProduct(string userId, ProductsInputViewModel product);
     }
 }

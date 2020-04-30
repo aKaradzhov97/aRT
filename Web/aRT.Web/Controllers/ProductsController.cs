@@ -35,7 +35,7 @@ namespace aRT.Web.Controllers
                 return this.NotFound("You dont have products!");
             }
 
-            return this.Created("All", new { Message = "All Product Finded...", data });
+            return this.Created("All", new {Message = "All Product Finded...", data});
         }
 
         [HttpPost("Create")]
@@ -49,10 +49,10 @@ namespace aRT.Web.Controllers
             var user = await this.userManager.GetUserAsync(this.User); // TO DO AddProduct(user.Id, input)!!!!!
             var data = await this.productsService.AddProduct("28a00a1e-3ce9-497d-94e8-caf7bb9eb690", input);
             return this.CreatedAtAction("All",
-                new { Message = $"{data.Name} with  price {data.Price} and {data.Quantity} created!", data });
+                new {Message = $"{data.Name} with  price {data.Price} and {data.Quantity} created!", data});
         }
 
-        [HttpPut("Update")]
+        [HttpPut("Update/{id?}")]
         public async Task<ActionResult> Edit(ProductsInputViewModel edit)
         {
             if (!this.ModelState.IsValid)
@@ -62,9 +62,9 @@ namespace aRT.Web.Controllers
 
             var user = await this.userManager
                 .GetUserAsync(this.User); // TO DO LOOK ProductsService and add userId EditProduct(user.id, edit);
-            var data = await this.productsService.EditProduct(edit);
+            var data = await this.productsService.EditProduct("d6af8c2c-c637-4c4d-b6c4-d9eca796bef2", edit);
             return this.CreatedAtAction("All",
-                new { Message = $"{data.Name} with price {data.Price} and {data.Quantity} changed!", data });
+                new {Message = $"{data.Name} with price {data.Price} and {data.Quantity} changed!", data});
         }
     }
 }

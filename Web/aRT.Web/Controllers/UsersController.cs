@@ -41,20 +41,12 @@
                 return this.BadRequest("Invalid Username or password!");
             }
 
-            return this.Accepted("Login", new { Message = $"{login.Username} is login!" });
+            return this.Accepted("Login", new {Message = $"{login.Username} is login!", userLogin});
         }
 
         [HttpPost("Register")]
         public async Task<ActionResult> Register(RegisterInputViewModel register)
         {
-            var user = new ApplicationUser
-            {
-                UserName = register.Username,
-                Email = register.Email,
-                PhoneNumber = register.PhoneNumber.ToString(),
-                CreatedOn = DateTime.UtcNow,
-            };
-
             if (!this.ModelState.IsValid)
             {
                 return this.BadRequest(this.ModelState);
@@ -70,16 +62,24 @@
                 return this.BadRequest("Email is already exists!");
             }
 
+            var user = new ApplicationUser
+            {
+                UserName = register.Username,
+                Email = register.Email,
+                PhoneNumber = register.PhoneNumber.ToString(),
+                CreatedOn = DateTime.UtcNow,
+            };
+
             var newUser = await this.userManager.CreateAsync(user, register.Password);
 
             if (newUser.Succeeded)
             {
                 await this.usersService.AddUserInRole(user.Id);
-                return this.Created("Register", new { Message = $"User {register.Username} is created!" });
+                return this.Created("Register", new {Message = $"User {register.Username} is created!"});
             }
             else
             {
-                return this.Created("Register", new { Message = $"User {register.Username} is NOT create!" });
+                return this.Created("Register", new {Message = $"User {register.Username} is NOT create!"});
             }
         }
     }

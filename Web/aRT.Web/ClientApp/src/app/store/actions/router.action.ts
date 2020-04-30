@@ -17,11 +17,11 @@ export class Go implements Action {
 }
 
 export class Back implements Action {
-  readonly type = BACK
+  readonly type = BACK;
 }
 
 export class Forward implements Action {
-  readonly type = FORWARD
+  readonly type = FORWARD;
 }
 
 export type Actions = Go | Back | Forward;

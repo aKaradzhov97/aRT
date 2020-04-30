@@ -18,17 +18,21 @@ import {MaterialModule} from '../material/material.module';
 import { UserService } from '../../core/services/user.service';
 
 // Components
-import { AuthComponent } from './containers/auth/auth.component';
+import { AuthLoginComponent } from './containers/auth-login/auth-login.component';
+import { AuthRegisterComponent } from './containers/auth-register/auth-register.component';
+import { AuthForgotPasswordComponent } from './containers/auth-forgot-password/auth-forgot-password.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
-    AuthComponent,
     LoginComponent,
     RegisterComponent,
     ForgotPasswordComponent,
+    AuthLoginComponent,
+    AuthRegisterComponent,
+    AuthForgotPasswordComponent,
   ],
   imports: [
     CommonModule,

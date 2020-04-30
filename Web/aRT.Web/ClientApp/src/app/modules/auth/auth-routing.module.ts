@@ -7,22 +7,22 @@ import {RouterModule, Routes} from '@angular/router';
 // Guards
 
 // Components
-import {LoginComponent} from './components/login/login.component';
-import {RegisterComponent} from './components/register/register.component';
-import {ForgotPasswordComponent} from './components/forgot-password/forgot-password.component';
+import {AuthLoginComponent} from './containers/auth-login/auth-login.component';
+import {AuthRegisterComponent} from './containers/auth-register/auth-register.component';
+import {AuthForgotPasswordComponent} from './containers/auth-forgot-password/auth-forgot-password.component';
 
 const ROUTES: Routes = [
   {
     path: 'login',
-    component: LoginComponent,
+    component: AuthLoginComponent,
   },
   {
     path: 'register',
-    component: RegisterComponent,
+    component: AuthRegisterComponent,
   },
   {
     path: 'forgot-password',
-    component: ForgotPasswordComponent,
+    component: AuthForgotPasswordComponent,
   },
 ];
 

@@ -1,6 +1,4 @@
-﻿using Renci.SshNet.Messages;
-
-namespace aRT.Web.Controllers
+﻿namespace aRT.Web.Controllers
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -8,6 +6,7 @@ namespace aRT.Web.Controllers
     using aRT.Data.Models;
     using aRT.Services.Data.ProductsService;
     using aRT.Web.ViewModels.Products;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
@@ -35,9 +34,10 @@ namespace aRT.Web.Controllers
                 return this.NotFound("You dont have products!");
             }
 
-            return this.Created("All", new {Message = "All Product Finded...", data});
+            return this.Created("All", new {Message = "All product finded...", data});
         }
 
+        [Authorize]
         [HttpPost("Create")]
         public async Task<ActionResult> Create(ProductsInputViewModel input)
         {
@@ -47,12 +47,13 @@ namespace aRT.Web.Controllers
             }
 
             var user = await this.userManager.GetUserAsync(this.User); // TO DO AddProduct(user.Id, input)!!!!!
-            var data = await this.productsService.AddProduct("28a00a1e-3ce9-497d-94e8-caf7bb9eb690", input);
+            var data = await this.productsService.AddProduct(input);
             return this.CreatedAtAction("All",
                 new {Message = $"{data.Name} with  price {data.Price} and {data.Quantity} created!", data});
         }
 
-        [HttpPut("Update/{id?}")]
+        [Authorize]
+        [HttpPut("Update/{id}")]
         public async Task<ActionResult> Edit(ProductsInputViewModel edit)
         {
             if (!this.ModelState.IsValid)
@@ -62,9 +63,23 @@ namespace aRT.Web.Controllers
 
             var user = await this.userManager
                 .GetUserAsync(this.User); // TO DO LOOK ProductsService and add userId EditProduct(user.id, edit);
-            var data = await this.productsService.EditProduct("d6af8c2c-c637-4c4d-b6c4-d9eca796bef2", edit);
+            var data = await this.productsService.EditProduct(edit);
             return this.CreatedAtAction("All",
                 new {Message = $"{data.Name} with price {data.Price} and {data.Quantity} changed!", data});
+        }
+
+        [Authorize]
+        [HttpDelete("Delete/{id}")]
+        public async Task<ActionResult> Delete(string id)
+        {
+            var data = await this.productsService.DeleteProduct(id);
+
+            if (data == null)
+            {
+                return this.NotFound();
+            }
+
+            return this.CreatedAtAction("All", new {Message = "Product successfully deleted!", data});
         }
     }
 }

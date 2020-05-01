@@ -17,7 +17,7 @@
         [Required(ErrorMessage = "Phone number is Required.")]
         [Phone]
         [RegularExpression("^[0]{1}[8]{1}[7-9]{1}[0-9]{7}$", ErrorMessage = "Your phone must be 10 digits and starting 087/088/089...")]
-        public string PhoneNumber { get; set; }
+        public string Phone { get; set; }
 
         [Required(ErrorMessage = "Password is Required.")]
         [Display(Name = "Password")]

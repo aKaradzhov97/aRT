@@ -66,7 +66,7 @@
             {
                 UserName = register.Username,
                 Email = register.Email,
-                PhoneNumber = register.PhoneNumber.ToString(),
+                PhoneNumber = register.Phone.ToString(),
                 CreatedOn = DateTime.UtcNow,
             };
 

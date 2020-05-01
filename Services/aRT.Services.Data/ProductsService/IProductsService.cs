@@ -9,8 +9,10 @@
     {
         Task<IEnumerable<ProductsInputViewModel>> GetAllProducts();
 
-        Task<Product> AddProduct(string userId, ProductsInputViewModel product);
+        Task<Product> AddProduct(ProductsInputViewModel product);
 
-        Task<Product> EditProduct(string userId, ProductsInputViewModel product);
+        Task<Product> EditProduct(ProductsInputViewModel product);
+
+        Task<Product> DeleteProduct(string productId);
     }
 }

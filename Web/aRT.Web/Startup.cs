@@ -1,3 +1,5 @@
+using System;
+
 namespace aRT
 {
     using System.Reflection;
@@ -33,7 +35,7 @@ namespace aRT
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(
-               options => options.UseMySQL(this.configuration.GetConnectionString("DefaultConnection")));
+                options => options.UseMySQL(this.configuration.GetConnectionString("DefaultConnection")));
 
             services
                 .AddIdentity<ApplicationUser, ApplicationRole>(options =>
@@ -47,15 +49,15 @@ namespace aRT
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            // Expire default Cookie time
+            services.ConfigureApplicationCookie(x => { x.ExpireTimeSpan = TimeSpan.FromDays(1); });
+
             services.AddControllers();
 
             services.AddSingleton(this.configuration);
 
             // In production, the Angular files will be served from this directory
-            services.AddSpaStaticFiles(configuration =>
-            {
-                configuration.RootPath = "ClientApp/dist";
-            });
+            services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
 
             // Data repositories
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
@@ -78,7 +80,8 @@ namespace aRT
             {
                 var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 
-                new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
+                new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter()
+                    .GetResult();
             }
 
             if (env.IsDevelopment())
@@ -101,6 +104,9 @@ namespace aRT
             }
 
             app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

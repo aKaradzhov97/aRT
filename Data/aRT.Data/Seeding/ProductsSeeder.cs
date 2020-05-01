@@ -6,7 +6,7 @@
     using aRT.Data.Models;
     using Microsoft.EntityFrameworkCore;
 
-    public class ProductSeeder : ISeeder
+    public class ProductsSeeder : ISeeder
     {
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
         {
@@ -15,7 +15,7 @@
                 return;
             }
 
-            var categories = new List<(string Name, string Description, string Image, decimal Price, int Quantity)>
+            var products = new List<(string Name, string Description, string Image, decimal Price, int Quantity)>
             {
                 (
                     "Mens T-Shirt",
@@ -61,15 +61,15 @@
                 ),
             };
 
-            foreach (var category in categories)
+            foreach (var product in products)
             {
                 await dbContext.Products.AddAsync(new Product
                 {
-                    Name = category.Name,
-                    Description = category.Description,
-                    Image = category.Image,
-                    Price = category.Price,
-                    Quantity = category.Quantity,
+                    Name = product.Name,
+                    Description = product.Description,
+                    Image = product.Image,
+                    Price = product.Price,
+                    Quantity = product.Quantity,
                     Created_On = DateTime.UtcNow,
                 });
             }

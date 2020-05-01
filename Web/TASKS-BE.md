@@ -11,7 +11,7 @@
 2. Add Seeds for DB for:
 * 1 Admin & 1 Normal user - Admin 
 * 6 Products with valid data - DONE
-* Categories & Subcategories
+* Categories & Subcategories - DONE
 
 3. Add Unit Tests
 * For everything

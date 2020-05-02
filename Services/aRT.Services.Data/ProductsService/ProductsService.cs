@@ -18,7 +18,7 @@
             this.repositoryProduct = repositoryProduct;
         }
 
-        public async Task<Product> AddProduct(string userId, ProductsInputViewModel product)
+        public async Task<Product> AddProduct(ProductsInputViewModel product)
         {
             var currentProduct = await this.repositoryProduct.All()
                 .FirstOrDefaultAsync(x => x.Name == product.Name && x.Price == product.Price);
@@ -33,7 +33,6 @@
                     Quantity = product.Quantity,
                     Price = product.Price,
                     Created_On = DateTime.UtcNow,
-                    UserId = userId,
                 };
 
                 await this.repositoryProduct.AddAsync(currentProduct);
@@ -44,12 +43,14 @@
         }
 
         // TO DO add and userId (string userId, ProductsInputViewModel product)
-        public async Task<Product> EditProduct(string userId, ProductsInputViewModel product)
+        public async Task<Product> EditProduct(ProductsInputViewModel product)
         {
             var currentProduct = await this.repositoryProduct.All().FirstOrDefaultAsync(x => x.Id == product.Id);
 
             if (currentProduct != null)
             {
+                this.repositoryProduct.Delete(currentProduct);
+
                 currentProduct = new Product
                 {
                     Id = product.Id,
@@ -59,7 +60,6 @@
                     Price = product.Price,
                     Quantity = product.Quantity,
                     Created_On = DateTime.UtcNow,
-                    UserId = userId,
                 };
 
                 await this.repositoryProduct.AddAsync(currentProduct);
@@ -67,6 +67,20 @@
             }
 
             return currentProduct;
+        }
+
+        public async Task<Product> DeleteProduct(string productId)
+        {
+            var currentProduct = await this.repositoryProduct.All().FirstOrDefaultAsync(x => x.Id == productId);
+
+            if (currentProduct != null)
+            {
+                this.repositoryProduct.Delete(currentProduct);
+                await this.repositoryProduct.SaveChangesAsync();
+                return currentProduct;
+            }
+
+            return null;
         }
 
         public async Task<IEnumerable<ProductsInputViewModel>> GetAllProducts()

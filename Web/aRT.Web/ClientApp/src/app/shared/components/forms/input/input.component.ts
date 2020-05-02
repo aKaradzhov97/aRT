@@ -9,16 +9,16 @@ import {
   selector: 'app-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
-  providers: [{
-    provide: NG_VALUE_ACCESSOR,
-    multi: true,
-    useExisting: InputComponent
-  },
-  {
-    provide: NG_VALIDATORS,
-    multi: true,
-    useExisting: InputComponent
-  }]
+  // providers: [{
+  //   provide: NG_VALUE_ACCESSOR,
+  //   multi: true,
+  //   useExisting: InputComponent
+  // },
+  // {
+  //   provide: NG_VALIDATORS,
+  //   multi: true,
+  //   useExisting: InputComponent
+  // }]
 })
 export class InputComponent implements ControlValueAccessor, Validator, OnInit {
   @ViewChild('input') input: ElementRef;

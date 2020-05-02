@@ -1,6 +1,12 @@
 ﻿// BASE COLORS
-$white = #fff;
-$black = #000;
-$indigo = #3f51b5;
+$white: #fff;
+$black: #000;
+$indigo: #3f51b5; // Purple
+$accent: #ff4081; // Pink
 
 // GRAYSCALE
+
+$bg-white: $white;
+$bg-black: $black;
+$bg-primary: $indigo;
+$bg-accent: $accent;

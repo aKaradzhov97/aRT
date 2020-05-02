@@ -5,6 +5,5 @@ export class Product {
               public description: string,
               public quantity: number,
               public price: number,
-              public created_on: string,) {
-  }
+              public created_on: string) { }
 }

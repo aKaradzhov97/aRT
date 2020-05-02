@@ -1,4 +1,8 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+// Decorators & Lifehooks
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+
+// Models
+import {Category} from '../../../models/category.model';
 
 @Component({
   selector: 'app-sidenav',
@@ -8,6 +12,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 export class SidenavComponent implements OnInit {
 
   @Output() sidenavClose = new EventEmitter();
+  @Input() categories: Category[] = [];
 
   constructor() {
   }
@@ -17,5 +22,5 @@ export class SidenavComponent implements OnInit {
 
   public onSidenavClose = () => {
     this.sidenavClose.emit();
-  };
+  }
 }

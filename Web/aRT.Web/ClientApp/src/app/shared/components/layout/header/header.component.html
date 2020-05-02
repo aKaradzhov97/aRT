@@ -1,38 +1,48 @@
-<mat-toolbar color="primary">
-  <section class="wrapper">
-    <nav class="nav-main left">
-      <ul>
-        <li>
-          <a routerLink="/auth/login" title="Login">
-            <i class="fas fa-user-lock"></i>
-          </a>
-        </li>
-        <li>
-          <a routerLink="/auth/register" title="Register">
-            <i class="fas fa-user-plus"></i>
+<section class="wrapper bg-primary m-0">
+  <section class="d-flex justify-content-end">
+    <ul class="d-flex justify-content-between align-items-center m-0">
+      <li>
+        <a routerLink="/" title="Shopping bag">
+          <i class="fas fa-shopping-bag"></i>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/auth/login" title="Login">
+          Login
+        </a>
+      </li>
+      <li>
+        <a routerLink="/auth/register" title="Register">
+          Register
+        </a>
+      </li>
+    </ul>
+  </section>
+  <section class="d-flex justify-content-between align-items-center">
+    <div class="site-branding">
+      <a routerLink="/">FooTR</a>
+    </div>
+    <nav class="nav-main .center d-flex justify-content-center">
+      <ul class="d-flex justify-content-between align-items-center m-0">
+        <li *ngFor="let category of categories">
+          <a routerLink="/{{category.name.toLowerCase()}}" title="{{category.name}}">
+            {{category.name}}
           </a>
         </li>
       </ul>
     </nav>
-    <div class="site-branding">
-      <a routerLink="/">FooTR</a>
-    </div>
-    <button id="toggle" mat-icon-button (click)="onToggleSidenav()">
+    <button id="toggle" class="d-flex justify-content-center align-items-center d-md-none" mat-icon-button (click)="onToggleSidenav()">
       <mat-icon>menu</mat-icon>
     </button>
-    <nav class="nav-main right">
-      <ul>
-        <li>
-          <a routerLink="/" title="Shopping bag">
-            <i class="fas fa-shopping-basket"></i>
-          </a>
-        </li>
+    <nav class="nav-main d-none d-md-flex">
+      <ul class="d-flex justify-content-between align-items-center m-0">
         <li>
           <a routerLink="/create" title="Create product">
             <i class="fas fa-plus-circle"></i>
           </a>
         </li>
       </ul>
+      <app-input type="text" placeholder="Search.." ngModel name="search"></app-input>
     </nav>
   </section>
-</mat-toolbar>
+</section>

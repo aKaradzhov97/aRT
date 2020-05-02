@@ -4,6 +4,5 @@
               public password?: string,
               public repeatPassword?: string,
               public phone?: string,
-              public email?: string) {
-  }
+              public email?: string) { }
 }

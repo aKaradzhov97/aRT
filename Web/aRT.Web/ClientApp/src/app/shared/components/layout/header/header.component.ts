@@ -1,5 +1,5 @@
 // Decorators and Lifehooks
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -8,11 +8,11 @@ import {Component, EventEmitter, Output} from '@angular/core';
 })
 export class HeaderComponent {
   @Output() public sidenavToggle = new EventEmitter();
-
+  @Input() categories: any[] = [];
   constructor() {
   }
 
   public onToggleSidenav = () => {
     this.sidenavToggle.emit();
-  };
+  }
 }

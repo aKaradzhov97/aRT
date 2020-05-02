@@ -20,20 +20,23 @@ import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router
 import {AppComponent} from './app.component';
 import {environment} from '../environments/environment';
 
+import { PLATFORM_ID, APP_ID, Inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 export const metaReducers: MetaReducer<any>[] = [];
 
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
-    AppRoutingModule,
     BrowserAnimationsModule,
+    AppRoutingModule,
+    HttpClientModule,
     SharedModule,
     MaterialModule,
-    HttpClientModule,
     StoreModule.forRoot(reducers, {metaReducers}),
     environment.production ? [] : StoreDevtoolsModule.instrument(),
     EffectsModule.forRoot(effects),
@@ -46,6 +49,14 @@ export const metaReducers: MetaReducer<any>[] = [];
       useClass: CustomSerializer
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [ AppComponent ]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    @Inject(APP_ID) private appId: string) {
+    const platform = isPlatformBrowser(platformId) ?
+      'in the browser' : 'on the server';
+    console.log(`Running ${platform} with appId=${appId}`);
+  }
+}

@@ -33,6 +33,10 @@
   justify-content: space-between;
 }
 
+.justify-content-end {
+  justify-content: flex-end;
+}
+
 .align-items-start {
   align-items: flex-start;
 }
@@ -79,6 +83,10 @@
 
   .justify-content-sm-between {
     justify-content: space-between;
+  }
+
+  .justify-content-sm-end {
+    justify-content: flex-end;
   }
 
   .align-items-sm-start {
@@ -129,6 +137,10 @@
     justify-content: space-between;
   }
 
+  .justify-content-md-end {
+    justify-content: flex-end;
+  }
+
   .align-items-md-start {
     align-items: flex-start;
   }
@@ -177,6 +189,10 @@
     justify-content: space-between;
   }
 
+  .justify-content-lg-end {
+    justify-content: flex-end;
+  }
+
   .align-items-lg-start {
     align-items: flex-start;
   }
@@ -223,6 +239,10 @@
 
   .justify-content-xl-between {
     justify-content: space-between;
+  }
+
+  .justify-content-xl-end {
+    justify-content: flex-end;
   }
 
   .align-items-xl-start {

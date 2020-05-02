@@ -1,3 +1,25 @@
-<mat-form-field>
+<mat-form-field class="form-label">
+  <mat-label *ngIf="label">{{label}}</mat-label>
+  <input class="form-control"
+         matInput
+         [type]="type"
+         #input
+         (input)="onChange($event.target.value)"
+         (blur)="onTouched()"
+         [disabled]="disabled"
+         [placeholder]="placeholder">
+  <div class="d-flex">
+   <span class="v"
+         *ngIf="(isRequired && controlDir && controlDir.control.valid &&
+    controlDir.control.touched) || !isRequired && input.value.length > 0">
+      <i class="far fa-check-circle"></i>
+    </span>
 
+    <label class="mr-auto">{{label}}
+      <span class="required" *ngIf="isRequired">*</span>
+    </label>
+  </div>
+  <span class="error"
+        *ngIf="controlDir && !controlDir.control.valid
+     && controlDir.control.touched">{{errorMsg}}</span>
 </mat-form-field>

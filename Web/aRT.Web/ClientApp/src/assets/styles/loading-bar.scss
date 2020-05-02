@@ -1,0 +1,135 @@
+﻿/*
+  ===========================================
+  README - Important information!
+  ===========================================
+  This file contains CSS rules, which apply to a specific node-module called @ngx-loading-bar.
+  It is only used to override the default styles. All default selectors are included in this
+  file but not all of them are actually overridden.
+
+  What's included in this node-module?
+  Spinner + Slim loading bar on top of the page.
+*/
+
+/*
+  ===========================================
+  OVERRIDE STYLES! Do not remove !important !
+  ===========================================
+*/
+
+ngx-loading-bar.loading-bar-fixed > div#loading-bar-spinner {
+  display: none !important;
+}
+
+ngx-loading-bar > div .bar {
+  background: var(--main-color-text) !important;
+}
+
+/*
+  ===========================================
+  DEFAULT STYLES! DO NOT CHANGE OR UNCOMMENT!
+  ===========================================
+
+ngx-loading-bar {
+  position: relative;
+  display: block;
+}
+
+ngx-loading-bar.loading-bar-fixed > div .bar {
+  position: fixed;
+}
+
+ngx-loading-bar.loading-bar-fixed > div#loading-bar-spinner {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+}
+
+[dir=rtl] ngx-loading-bar.loading-bar-fixed > div#loading-bar-spinner {
+  right: 10px;
+  left: unset;
+}
+
+ngx-loading-bar.loading-bar-fixed > div .peg {
+  display: block;
+}
+
+ngx-loading-bar > div {
+  pointer-events: none;
+  transition: 350ms linear;
+  color: #29d;
+}
+
+ngx-loading-bar > div .bar {
+  transition: width 350ms;
+  background: #29d;
+  position: absolute;
+  z-index: 10002;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  border-bottom-right-radius: 1px;
+  border-top-right-radius: 1px;
+}
+
+[dir=rtl] ngx-loading-bar > div .bar {
+  right: 0;
+  left: unset;
+}
+
+ngx-loading-bar > div .peg {
+  display: none;
+  position: absolute;
+  width: 70px;
+  right: 0;
+  top: 0;
+  height: 2px;
+  opacity: .45;
+  box-shadow: 1px 0 6px 1px;
+  color: inherit;
+  border-radius: 100%;
+}
+
+ngx-loading-bar > div#loading-bar-spinner {
+  display: block;
+  position: absolute;
+  z-index: 10002;
+  top: 5px;
+  left: 0;
+}
+
+ngx-loading-bar > div#loading-bar-spinner .spinner-icon {
+  width: 14px;
+  height: 14px;
+  border: 2px solid transparent;
+  border-top-color: inherit;
+  border-left-color: inherit;
+  border-radius: 50%;
+  -webkit-animation: .4s linear infinite loading-bar-spinner;
+  animation: .4s linear infinite loading-bar-spinner;
+}
+
+@-webkit-keyframes loading-bar-spinner {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loading-bar-spinner {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+*/

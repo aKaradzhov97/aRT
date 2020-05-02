@@ -14,5 +14,7 @@
         Task<Product> EditProduct(ProductsInputViewModel product);
 
         Task<Product> DeleteProduct(string productId);
+
+        Task<IEnumerable<Product>> Search(string productName);
     }
 }

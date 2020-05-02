@@ -9,7 +9,7 @@
 * Fix Cookies expire date >>> 24 Hours - DONE
 
 2. Add Seeds for DB for:
-* 1 Admin & 1 Normal user - Admin 
+* 1 Admin & 1 Normal user - DONE 
 * 6 Products with valid data - DONE
 * Categories & Subcategories - DONE
 

@@ -9,7 +9,7 @@
     using Microsoft.AspNetCore.Mvc;
 
     [ApiController]
-    [Route("auth")]
+    [Route("api/auth")]
     public class UsersController : ControllerBase
     {
         private readonly IUsersService usersService;

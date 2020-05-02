@@ -11,7 +11,7 @@
     using Microsoft.AspNetCore.Mvc;
 
     [ApiController]
-    [Route("product")]
+    [Route("api/product")]
     public class ProductsController : ControllerBase
     {
         private readonly IProductsService productsService;
@@ -26,10 +26,10 @@
         }
 
         [HttpGet("All")]
-        public async Task<ActionResult<IEnumerable<ProductsInputViewModel>>> All()
+        public async Task<ActionResult<IEnumerable<ProductsInputViewModel>>> AllProduct()
         {
             var data = await this.productsService.GetAllProducts();
-            if (data.Count() == 0)
+            if (!data.Any())
             {
                 return this.NotFound("You dont have products!");
             }
@@ -37,7 +37,19 @@
             return this.Created("All", new {Message = "All product finded...", data});
         }
 
-        [Authorize]
+        [HttpPost("Search")]
+        public async Task<ActionResult> Search(string search)
+        {
+            var data = await this.productsService.Search(search);
+            if (!data.Any())
+            {
+                return this.NotFound("Not fount Products!");
+            }
+
+            return this.Created("All", new {Message = "All products finded...", data});
+        }
+
+        [Authorize(Roles = "Administrator")]
         [HttpPost("Create")]
         public async Task<ActionResult> Create(ProductsInputViewModel input)
         {
@@ -48,11 +60,12 @@
 
             var user = await this.userManager.GetUserAsync(this.User); // TO DO AddProduct(user.Id, input)!!!!!
             var data = await this.productsService.AddProduct(input);
-            return this.CreatedAtAction("All",
+            return this.CreatedAtAction(
+                "AllProduct",
                 new {Message = $"{data.Name} with  price {data.Price} and {data.Quantity} created!", data});
         }
 
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         [HttpPut("Update/{id}")]
         public async Task<ActionResult> Edit(ProductsInputViewModel edit)
         {
@@ -64,11 +77,12 @@
             var user = await this.userManager
                 .GetUserAsync(this.User); // TO DO LOOK ProductsService and add userId EditProduct(user.id, edit);
             var data = await this.productsService.EditProduct(edit);
-            return this.CreatedAtAction("All",
+            return this.CreatedAtAction(
+                "AllProduct",
                 new {Message = $"{data.Name} with price {data.Price} and {data.Quantity} changed!", data});
         }
 
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         [HttpDelete("Delete/{id}")]
         public async Task<ActionResult> Delete(string id)
         {
@@ -79,7 +93,7 @@
                 return this.NotFound();
             }
 
-            return this.CreatedAtAction("All", new {Message = "Product successfully deleted!", data});
+            return this.CreatedAtAction("AllProduct", new {Message = "Product successfully deleted!", data});
         }
     }
 }

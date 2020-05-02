@@ -1,8 +1,11 @@
-﻿namespace aRT.Services.Data.ProductsService
+﻿using System.Linq;
+
+namespace aRT.Services.Data.ProductsService
 {
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+
     using aRT.Data.Common.Repositories;
     using aRT.Data.Models;
     using aRT.Services.Mapping;
@@ -81,6 +84,14 @@
             }
 
             return null;
+        }
+
+        public async Task<IEnumerable<Product>> Search(string productName)
+        {
+            var currentProduct = await this.repositoryProduct.All()
+                .Where(x => x.Name == productName).ToListAsync();
+
+            return currentProduct;
         }
 
         public async Task<IEnumerable<ProductsInputViewModel>> GetAllProducts()

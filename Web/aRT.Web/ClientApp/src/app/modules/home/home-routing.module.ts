@@ -9,8 +9,6 @@ import * as fromGuards from './guards';
 
 // Components
 import {HomeComponent} from './containers/home/home.component';
-import {CreateProductComponent} from './containers/create-product/create-product.component';
-import {EditProductComponent} from './containers/edit-product/edit-product.component';
 import {DetailsProductComponent} from './containers/details-product/details-product.component';
 
 const ROUTES: Routes = [
@@ -19,16 +17,6 @@ const ROUTES: Routes = [
     pathMatch: 'full',
     component: HomeComponent,
     canActivate: [fromGuards.ProductsGuard],
-  },
-  {
-    path: 'create',
-    component: CreateProductComponent,
-    canActivate: [fromGuards.ProductsGuard],
-  },
-  {
-    path: 'edit/:productId',
-    component: EditProductComponent,
-    canActivate: [fromGuards.ProductExistsGuard],
   },
   {
     path: 'details/:productId',

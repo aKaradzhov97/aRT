@@ -18,11 +18,9 @@ import {MaterialModule} from '../material/material.module';
 import {UserService} from '../../core/services/user.service';
 
 // Components
-import { AdminPanelComponent } from './containers/admin-panel/admin-panel.component';
 
 @NgModule({
   declarations: [
-    AdminPanelComponent
   ],
   imports: [
     CommonModule,

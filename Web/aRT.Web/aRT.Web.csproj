@@ -40,9 +40,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\src\app\modules\admin\components" />
     <Folder Include="ClientApp\src\app\modules\admin\containers" />
     <Folder Include="ClientApp\src\app\modules\admin\guards" />
+    <Folder Include="ClientApp\src\app\modules\admin\modules\category\components" />
+    <Folder Include="ClientApp\src\app\modules\admin\modules\category\containers" />
+    <Folder Include="ClientApp\src\app\modules\admin\modules\order" />
+    <Folder Include="ClientApp\src\app\modules\admin\modules\product\components" />
+    <Folder Include="ClientApp\src\app\modules\admin\modules\product\containers" />
+    <Folder Include="ClientApp\src\app\modules\admin\modules\user" />
     <Folder Include="ClientApp\src\app\modules\admin\store" />
     <Folder Include="ClientApp\src\app\modules\auth\components" />
     <Folder Include="ClientApp\src\app\modules\auth\containers" />

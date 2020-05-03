@@ -23,10 +23,6 @@ import {HomeComponent} from './containers/home/home.component';
 import {ProductsComponent} from './components/products/products.component';
 import {ProductsListComponent} from './components/products-list/products-list.component';
 import {ProductsListItemComponent} from './components/products-list-item/products-list-item.component';
-import {CreateProductComponent} from './containers/create-product/create-product.component';
-import {CreateProductFormComponent} from './components/create-product-form/create-product-form.component';
-import {EditProductComponent} from './containers/edit-product/edit-product.component';
-import {EditProductFormComponent} from './components/edit-product-form/edit-product-form.component';
 import { DetailsProductComponent } from './containers/details-product/details-product.component';
 import { DetailsProductItemComponent } from './components/details-product-item/details-product-item.component';
 
@@ -36,10 +32,6 @@ import { DetailsProductItemComponent } from './components/details-product-item/d
     ProductsComponent,
     ProductsListComponent,
     ProductsListItemComponent,
-    CreateProductComponent,
-    CreateProductFormComponent,
-    EditProductComponent,
-    EditProductFormComponent,
     DetailsProductComponent,
     DetailsProductItemComponent,
   ],

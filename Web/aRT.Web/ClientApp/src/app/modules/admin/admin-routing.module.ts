@@ -7,13 +7,16 @@ import {RouterModule, Routes} from '@angular/router';
 // Guards
 
 // Components
-import {AdminPanelComponent} from './containers/admin-panel/admin-panel.component';
 
 
 const ROUTES: Routes = [
   {
-    path: 'panel',
-    component: AdminPanelComponent,
+    path: 'category',
+    loadChildren: () => import('./modules/category/category.module').then(m => m.CategoryModule)
+  },
+  {
+    path: 'product',
+    loadChildren: () => import('./modules/product/product.module').then(m => m.ProductModule)
   },
 ];
 

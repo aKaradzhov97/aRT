@@ -1,8 +1,8 @@
 ﻿1. Expose API routes for:
-* Create Category
-* Update Category
-* Retrieve ALL Categories & Return their Subcategories
-* Delete Category
+* Create Category - DONE
+* Update Category - DONE
+* Return ALL Categories - DONE
+* Delete Category - DONE
 
 1.1 API ROUTES Products
 * Search for Products by name >>> Product[]

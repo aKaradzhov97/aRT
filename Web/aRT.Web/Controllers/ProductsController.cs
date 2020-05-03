@@ -34,7 +34,7 @@
                 return this.NotFound("You dont have products!");
             }
 
-            return this.Created("All", new {Message = "All product finded...", data});
+            return this.CreatedAtAction("AllProduct", new {Message = "All product finded...", data});
         }
 
         [HttpPost("Search")]
@@ -46,7 +46,7 @@
                 return this.NotFound("Not fount Products!");
             }
 
-            return this.Created("All", new {Message = "All products finded...", data});
+            return this.CreatedAtAction("AllProduct", new {Message = "All products finded...", data});
         }
 
         [Authorize(Roles = "Administrator")]

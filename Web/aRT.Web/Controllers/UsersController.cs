@@ -41,7 +41,9 @@
                 return this.BadRequest("Invalid Username or password!");
             }
 
-            return this.Accepted("Login", new {Message = $"{login.Username} is login!", userLogin});
+            var user = await this.userManager.GetUserAsync(this.User);
+
+            return this.Accepted(new {Message = $"{login.Username} is login!", user.UserName, user.Email});
         }
 
         [HttpPost("Register")]
@@ -75,11 +77,11 @@
             if (newUser.Succeeded)
             {
                 await this.usersService.AddUserInRole(user.Id);
-                return this.Created("Register", new {Message = $"User {register.Username} is created!"});
+                return this.CreatedAtAction("Login", new {Message = $"User {register.Username} is created!"});
             }
             else
             {
-                return this.Created("Register", new {Message = $"User {register.Username} is NOT create!"});
+                return this.BadRequest(new {Message = $"User {register.Username} is NOT create!"});
             }
         }
     }

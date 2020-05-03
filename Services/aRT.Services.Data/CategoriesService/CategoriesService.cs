@@ -1,8 +1,11 @@
 ﻿namespace aRT.Services.Data.CategoriesService
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
+
     using aRT.Data.Common.Repositories;
     using aRT.Data.Models;
     using aRT.Web.ViewModels.Categories;
@@ -11,10 +14,14 @@
     public class CategoriesService : ICategoriesService
     {
         private readonly IRepository<Category> repositoryCategories;
+        private readonly IRepository<CategorySubCategory> repositoryCategorySubCategories;
 
-        public CategoriesService(IRepository<Category> repositoryCategories)
+        public CategoriesService(
+            IRepository<Category> repositoryCategories,
+            IRepository<CategorySubCategory> repositoryCategorySubCategories)
         {
             this.repositoryCategories = repositoryCategories;
+            this.repositoryCategorySubCategories = repositoryCategorySubCategories;
         }
 
         public async Task<IEnumerable<Category>> GetAllCategories()
@@ -76,6 +83,21 @@
             }
 
             return null;
+        }
+
+        public async Task<IEnumerable<SubCategory>> GetAllSubCategories(string id)
+        {
+            var currentSubCategoriesInCategory = await this.repositoryCategorySubCategories.All()
+                .Where(x => x.CategoryId == id)
+                .Select(x => new SubCategory()
+                {
+                    Id = x.SubCategory.Id,
+                    Name = x.SubCategory.Name,
+                    Created_On = x.SubCategory.Created_On,
+                })
+                .ToListAsync();
+
+            return currentSubCategoriesInCategory;
         }
     }
 }

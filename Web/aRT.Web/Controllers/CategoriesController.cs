@@ -1,5 +1,8 @@
-﻿namespace aRT.Web.Controllers
+﻿using Microsoft.EntityFrameworkCore.Internal;
+
+namespace aRT.Web.Controllers
 {
+    using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -35,7 +38,20 @@
                 return this.BadRequest("You dont have categories!");
             }
 
-            return this.Created("All", new {Message = "All categories found...", data});
+            return this.Created("AllCategories", new {Message = "All categories found...", data});
+        }
+
+        [HttpGet("AllSubCategories/{id}")]
+        public async Task<ActionResult<IEnumerable<SubCategory>>> AllSubCategories(string id)
+        {
+            var data = await this.categoriesService.GetAllSubCategories(id);
+
+            if (!data.Any())
+            {
+                return this.BadRequest("You dont have categories!");
+            }
+
+            return this.Created("AllSubCategories", new {Message = "All categories found...", data});
         }
 
         [HttpPost("Create")]

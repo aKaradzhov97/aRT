@@ -40,8 +40,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ClientApp\src\app\modules\admin\components" />
+    <Folder Include="ClientApp\src\app\modules\admin\containers" />
+    <Folder Include="ClientApp\src\app\modules\admin\guards" />
+    <Folder Include="ClientApp\src\app\modules\admin\store" />
     <Folder Include="ClientApp\src\app\modules\auth\components" />
     <Folder Include="ClientApp\src\app\modules\auth\containers" />
+    <Folder Include="ClientApp\src\app\modules\user\components" />
+    <Folder Include="ClientApp\src\app\modules\user\containers" />
+    <Folder Include="ClientApp\src\app\modules\user\guards" />
+    <Folder Include="ClientApp\src\app\modules\user\store" />
     <Folder Include="ClientApp\src\app\shared\components\forms" />
   </ItemGroup>
 

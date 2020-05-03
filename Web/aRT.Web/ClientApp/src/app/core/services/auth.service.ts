@@ -10,25 +10,19 @@ import { Subject } from 'rxjs';
 export class AuthService {
   isUserLogged = new Subject<boolean>();
 
-  saveSession(token): void {
-    console.log(`SAVE SESSION FUNCTION: ${token}`);
+  saveSession(): void {
+    localStorage.setItem('isAuthenticated', 'true');
   }
 
   clearSession(): void {
-  }
-
-  getProfile(): void {
+    localStorage.removeItem('isAuthenticated');
   }
 
   isLoggedIn(): boolean {
-      return false;
+      return !!localStorage.getItem('isAuthenticated');
   }
 
   isAdmin(): boolean {
     return false;
-  }
-
-  getToken(): string {
-    return 'TOKEN';
   }
 }

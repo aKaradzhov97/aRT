@@ -1,6 +1,9 @@
 // Decorators and Lifehooks
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 
+// Services
+import {AuthService} from '../../../../core/services/auth.service';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -9,7 +12,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 export class HeaderComponent {
   @Output() public sidenavToggle = new EventEmitter();
   @Input() categories: any[] = [];
-  constructor() {
+  constructor(private authService: AuthService) {
   }
 
   public onToggleSidenav = () => {

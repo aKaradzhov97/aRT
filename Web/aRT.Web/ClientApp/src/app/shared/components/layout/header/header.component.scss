@@ -41,15 +41,12 @@
     background: transparent;
     border: none;
     outline: none;
-    position: absolute;
-    right: 1.5rem;
     padding: 0.5rem;
-    margin: 0.5rem;
     color: #FFF;
     cursor: pointer;
   }
 
-  @include media-breakpoint-md-down {
+  @include media-breakpoint-sm-down {
     ul > li > a {
       display: none;
     }

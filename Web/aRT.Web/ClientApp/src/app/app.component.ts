@@ -10,6 +10,9 @@ import {Category} from './shared/models/category.model';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  loadingBarColor = `#ff4081`;
+  loadingBarHeight = 8;
+  loadingSpinnerShown = false;
   categories: Category[] = [
     {
       id: '1',

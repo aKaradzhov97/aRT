@@ -30,8 +30,12 @@
           </li>
         </ng-container>
       </ul>
-      <app-input type="text" placeholder="Search.." ngModel name="search"></app-input>
+      <app-input class="d-none d-sm-block" type="text" placeholder="Search.." ngModel name="search"></app-input>
     </section>
+    <button id="toggle" class="d-flex justify-content-center align-items-center d-sm-none" mat-icon-button
+            (click)="onToggleSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
   </section>
   <section class="d-flex justify-content-center align-items-center">
     <nav class="nav-main .center d-flex justify-content-center">
@@ -43,11 +47,7 @@
         </li>
       </ul>
     </nav>
-    <button id="toggle" class="d-flex justify-content-center align-items-center d-md-none" mat-icon-button
-            (click)="onToggleSidenav()">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <nav class="nav-main d-none d-md-flex">
+    <nav class="nav-main d-none d-sm-flex">
       <ul class="d-flex justify-content-between align-items-center m-0">
         <li>
           <a routerLink="/create" title="Create product">

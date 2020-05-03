@@ -17,31 +17,31 @@ export class AppComponent {
     {
       id: '1',
       name: 'Mens',
-      created_on: 'Today',
+      createdOn: 'Today',
       subcategories: [],
     },
     {
       id: '2',
       name: 'Womens',
-      created_on: 'Today',
+      createdOn: 'Today',
       subcategories: [],
     },
     {
       id: '3',
       name: 'Kids',
-      created_on: 'Today',
+      createdOn: 'Today',
       subcategories: [],
     },
     {
       id: '4',
       name: 'Collections',
-      created_on: 'Today',
+      createdOn: 'Today',
       subcategories: [],
     },
     {
       id: '5',
       name: 'HOT!',
-      created_on: 'Today',
+      createdOn: 'Today',
       subcategories: [],
     }
   ];

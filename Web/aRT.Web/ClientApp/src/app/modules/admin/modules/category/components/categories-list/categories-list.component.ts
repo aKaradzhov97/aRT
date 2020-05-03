@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+// Decorators & Lifehooks
+import {Component, Input, OnInit} from '@angular/core';
+
+// Models
+import {Category} from '../../../../../../shared/models/category.model';
 
 @Component({
   selector: 'app-categories-list',
@@ -6,8 +10,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./categories-list.component.scss']
 })
 export class CategoriesListComponent implements OnInit {
+  @Input() categories: Category[] = [];
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

@@ -2,7 +2,7 @@ import * as fromProducts from '../actions/products.action';
 import {Product} from '../../../../shared/models/product.model';
 
 export interface ProductState {
-  entities: { [id: number]: Product };
+  entities: { [id: string]: Product };
   loaded: boolean;
   loading: boolean;
 }
@@ -26,7 +26,7 @@ export function reducer(state = initialState,
     case fromProducts.LOAD_PRODUCTS_SUCCESS: {
       const products: Product[] = action.payload.data;
       const entities = products.reduce(
-        (entities: { [id: number]: Product }, product: Product) => {
+        (entities: { [id: string]: Product }, product: Product) => {
           return {
             ...entities,
             [product.id]: product,

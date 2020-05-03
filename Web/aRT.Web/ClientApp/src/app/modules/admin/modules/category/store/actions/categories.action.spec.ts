@@ -1,4 +1,4 @@
-import * as fromCategories from './products.action';
+import * as fromCategories from './categories.action';
 
 describe('Categories Actions', () => {
   describe('LoadCategories Actions', () => {

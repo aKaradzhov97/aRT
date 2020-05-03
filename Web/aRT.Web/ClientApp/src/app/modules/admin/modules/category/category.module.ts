@@ -4,7 +4,7 @@ import {NgModule} from '@angular/core';
 // NGRX & Store
 import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
-// import {reducers, effects} from './store';
+import {reducers, effects} from './store';
 
 // Modules
 import {CommonModule} from '@angular/common';
@@ -40,8 +40,8 @@ import {CategoriesListComponent} from './components/categories-list/categories-l
     ReactiveFormsModule,
     CategoryRoutingModule,
     MaterialModule,
-    // StoreModule.forFeature('auth', reducers),
-    // EffectsModule.forFeature(effects),
+    StoreModule.forFeature('categories', reducers),
+    EffectsModule.forFeature(effects),
   ],
   providers: [
     CategoryService,

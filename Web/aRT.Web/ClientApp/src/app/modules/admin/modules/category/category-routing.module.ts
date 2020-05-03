@@ -8,12 +8,22 @@ import {RouterModule, Routes} from '@angular/router';
 
 // Components
 import {CreateCategoryComponent} from './containers/create-category/create-category.component';
+import {UpdateCategoryComponent} from './containers/update-category/update-category.component';
+import {CategoriesComponent} from './containers/categories/categories.component';
 
 
 const ROUTES: Routes = [
   {
     path: 'create',
     component: CreateCategoryComponent,
+  },
+  {
+    path: 'update',
+    component: UpdateCategoryComponent,
+  },
+  {
+    path: 'all',
+    component: CategoriesComponent,
   },
 ];
 

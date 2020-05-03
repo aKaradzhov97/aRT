@@ -2,7 +2,7 @@ import * as fromProducts from '../actions/products.action';
 import {Product} from '../../../../../../shared/models/product.model';
 
 export interface ProductState {
-  entities: { [id: number]: Product };
+  entities: { [id: string]: Product };
   loaded: boolean;
   loading: boolean;
 }
@@ -26,7 +26,7 @@ export function reducer(state = initialState,
     case fromProducts.LOAD_PRODUCTS_SUCCESS: {
       const products: Product[] = action.payload.data;
       const entities = products.reduce(
-        (entities: { [id: number]: Product }, product: Product) => {
+        (entities: { [id: string]: Product }, product: Product) => {
           return {
             ...entities,
             [product.id]: product,
@@ -86,16 +86,7 @@ export function reducer(state = initialState,
 
     case fromProducts.DELETE_PRODUCT_SUCCESS: {
       const product = action.payload;
-
-      // What?
-      // Yes! The following line is using destructuring to obtain and name
-      // the deleted product as 'REMOVED' and the second argument
-      // contains the remaining properties of that destructuring.
-      // In other words: immutable way to remove a property from an object.
-      // @ts-ignore
       const {[product.id]: removed, ...entities } = state.entities;
-
-      delete entities[product.id];
 
       return {
         ...state,

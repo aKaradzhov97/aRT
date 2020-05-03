@@ -32,19 +32,19 @@ export class CategoryService {
       .pipe(catchError((error: any) => Observable.throw(error.json())));
   }
 
-  createProduct(payload: Category): Observable<Category> {
+  createCategory(payload: Category): Observable<Category> {
     return this.http
       .post<Category>(CREATE_ONE_URL, payload)
       .pipe(catchError((error: any) => Observable.throw(error.json())));
   }
 
-  updateProduct(payload: Category): Observable<Category> {
+  updateCategory(payload: Category): Observable<Category> {
     return this.http
       .put<Category>(`${UPDATE_ONE_URL}${payload.id}`, payload)
       .pipe(catchError((error: any) => Observable.throw(error.json())));
   }
 
-  deleteProduct(payload: Category): Observable<Category> {
+  deleteCategory(payload: Category): Observable<Category> {
     return this.http
       .delete<any>(`${DELETE_ONE_URL}${payload.id}`)
       .pipe(catchError((error: any) => Observable.throw(error.json())));

@@ -5,7 +5,7 @@ import {Component, EventEmitter, OnInit, Input, Output, ChangeDetectionStrategy}
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 
 // Models
-import {Product} from '../../../../shared/models/product.model';
+import {Product} from '../../../../../../shared/models/product.model';
 
 @Component({
   selector: 'app-edit-product-form',

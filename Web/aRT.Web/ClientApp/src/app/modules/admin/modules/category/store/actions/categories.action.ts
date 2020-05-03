@@ -108,7 +108,7 @@ export class DeleteCategorySuccess implements Action {
 }
 
 // Action types
-export type ProductsAction =
+export type CategoriesAction =
   | LoadCategories
   | LoadCategoriesFail
   | LoadCategoriesSuccess

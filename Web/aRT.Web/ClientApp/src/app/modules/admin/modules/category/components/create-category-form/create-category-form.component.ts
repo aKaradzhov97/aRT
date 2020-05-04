@@ -8,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateCategoryFormComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
+  }
+
+  onSubmit(f) {
+    console.log(f);
   }
 
 }

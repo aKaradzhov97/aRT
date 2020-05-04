@@ -8,9 +8,10 @@ import {reducers, effects} from './store';
 
 // Modules
 import {CommonModule} from '@angular/common';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CategoryRoutingModule} from './category-routing.module';
 import {MaterialModule} from '../../../material/material.module';
+import {SharedModule} from '../../../../shared/shared.module';
 
 // Guards
 
@@ -37,11 +38,13 @@ import {CategoriesListComponent} from './components/categories-list/categories-l
   ],
   imports: [
     CommonModule,
+    FormsModule,
     ReactiveFormsModule,
     CategoryRoutingModule,
     MaterialModule,
     StoreModule.forFeature('categories', reducers),
     EffectsModule.forFeature(effects),
+    SharedModule,
   ],
   providers: [
     CategoryService,

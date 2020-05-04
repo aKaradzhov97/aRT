@@ -1,1 +1,10 @@
-<p>CREATE CATEGORY FORM WORKS!</p>
+<form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+  <app-input [errorMsg]="'Please provide category name!'"
+             [isRequired]="true"
+             [label]="'Name'"
+             [pattern]="'[A-Za-z0-9._%-\s*]+'"
+             [placeholder]="'Ex. Kids...'"
+             name="email" ngModel></app-input>
+
+  <button [disabled]="!f.valid" color="primary" mat-raised-button type="submit">Create!</button>
+</form>

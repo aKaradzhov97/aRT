@@ -8,9 +8,9 @@ import {EffectsModule} from '@ngrx/effects';
 
 // Modules
 import {CommonModule} from '@angular/common';
-import {ReactiveFormsModule} from '@angular/forms';
 import {AdminRoutingModule} from './admin-routing.module';
 import {MaterialModule} from '../material/material.module';
+import {SharedModule} from '../../shared/shared.module';
 
 // Guards
 
@@ -24,9 +24,9 @@ import {UserService} from '../../core/services/user.service';
   ],
   imports: [
     CommonModule,
-    ReactiveFormsModule,
     AdminRoutingModule,
     MaterialModule,
+    SharedModule
     // StoreModule.forFeature('auth', reducers),
     // EffectsModule.forFeature(effects),
   ],

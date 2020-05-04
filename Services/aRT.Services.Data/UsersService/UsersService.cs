@@ -1,4 +1,6 @@
-﻿namespace aRT.Services.Data.UsersService
+﻿using aRT.Services.Mapping;
+
+namespace aRT.Services.Data.UsersService
 {
     using System;
     using System.IdentityModel.Tokens.Jwt;
@@ -9,6 +11,7 @@
     using aRT.Data.Common.Repositories;
     using aRT.Data.Models;
     using aRT.Web.Infrastructure.Jwt;
+    using aRT.Web.ViewModels.Users;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Options;
@@ -47,7 +50,7 @@
             await this.userRoleRepository.SaveChangesAsync();
         }
 
-        public async Task<ApplicationUser> Authentication(string username, string password)
+        public async Task<string> Authentication(string username, string password)
         {
             var user = await this.userRepository.All()
                 .SingleOrDefaultAsync(x => x.UserName == username);
@@ -75,9 +78,9 @@
             };
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
-            user.Token = tokenHandler.WriteToken(token);
+            var userToken = tokenHandler.WriteToken(token);
 
-            return user;
+            return userToken;
         }
 
         public async Task<bool> EmailExists(string email)

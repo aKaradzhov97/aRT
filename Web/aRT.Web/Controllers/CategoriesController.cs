@@ -1,8 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Internal;
-
-namespace aRT.Web.Controllers
+﻿namespace aRT.Web.Controllers
 {
-    using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -14,7 +11,7 @@ namespace aRT.Web.Controllers
     using Microsoft.AspNetCore.Mvc;
 
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/category")]
     public class CategoriesController : ControllerBase
     {
         private readonly ICategoriesService categoriesService;
@@ -28,7 +25,7 @@ namespace aRT.Web.Controllers
             this.userManager = userManager;
         }
 
-        [HttpGet("AllCategories")]
+        [HttpGet("All")]
         public async Task<ActionResult<IEnumerable<Category>>> AllCategories()
         {
             var data = await this.categoriesService.GetAllCategories();

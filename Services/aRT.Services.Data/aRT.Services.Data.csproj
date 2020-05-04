@@ -16,11 +16,13 @@
     <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.164" PrivateAssets="all">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.5.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Data\aRT.Data.Common\aRT.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\aRT.Data.Models\aRT.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Web\aRT.Web.Infrastructure\aRT.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Web\aRT.Web.ViewModels\aRT.Web.ViewModels.csproj" />
     <ProjectReference Include="..\aRT.Services.Mapping\aRT.Services.Mapping.csproj" />
   </ItemGroup>

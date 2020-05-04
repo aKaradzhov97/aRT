@@ -1,4 +1,4 @@
-﻿using aRT.Services.Mapping;
+﻿using System.Linq;
 
 namespace aRT.Services.Data.UsersService
 {
@@ -7,11 +7,9 @@ namespace aRT.Services.Data.UsersService
     using System.Security.Claims;
     using System.Text;
     using System.Threading.Tasks;
-
     using aRT.Data.Common.Repositories;
     using aRT.Data.Models;
     using aRT.Web.Infrastructure.Jwt;
-    using aRT.Web.ViewModels.Users;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Options;
@@ -54,6 +52,9 @@ namespace aRT.Services.Data.UsersService
         {
             var user = await this.userRepository.All()
                 .SingleOrDefaultAsync(x => x.UserName == username);
+            var roleUser = await this.userRoleRepository.All()
+                .SingleOrDefaultAsync(x => x.UserId == user.Id);
+            var role = await this.roleRepository.All().SingleOrDefaultAsync(x => x.Id == roleUser.RoleId);
 
             if (user == null)
             {
@@ -70,6 +71,7 @@ namespace aRT.Services.Data.UsersService
                 {
                     new Claim(ClaimTypes.Name, user.UserName.ToString()),
                     new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                    new Claim(ClaimTypes.Role, role.Name.ToString()),
                 }),
                 Expires = DateTime.UtcNow.AddDays(1),
                 SigningCredentials = new SigningCredentials(

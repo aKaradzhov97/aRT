@@ -1,6 +1,4 @@
-﻿using Renci.SshNet.Messages;
-
-namespace aRT.Web.Controllers
+﻿namespace aRT.Web.Controllers
 {
     using System;
     using System.Threading.Tasks;

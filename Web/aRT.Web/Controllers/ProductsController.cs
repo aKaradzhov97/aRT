@@ -58,7 +58,6 @@
                 return this.BadRequest();
             }
 
-            var user = await this.userManager.GetUserAsync(this.User); // TO DO AddProduct(user.Id, input)!!!!!
             var data = await this.productsService.AddProduct(input);
             return this.CreatedAtAction(
                 "AllProduct",

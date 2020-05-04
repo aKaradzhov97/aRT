@@ -15,3 +15,23 @@
 
 3. Add Unit Tests
 * For everything
+
+=============================================================
+                BACKEND - RESPONSE STANDARD
+=============================================================
+Success:
+{
+    data: []
+    message: ''
+}
+
+Error form validation:
+{
+    errors: []
+    message: ''
+}
+
+Error (example: user not found):
+{
+    message: ''
+}

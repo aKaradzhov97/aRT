@@ -35,9 +35,17 @@
             }
 
             var userLogin = await this.signInManager.PasswordSignInAsync(login.Username, login.Password, true, false);
-            var data = await this.usersService.Authentication(login.Username, login.Password);
 
-            if (!userLogin.Succeeded || data == null)
+            // That finding current User!
+            var currentUser = await this.userManager.FindByNameAsync(login.Username);
+
+            // That check current User with Password!
+            var checkUser = await this.signInManager.CheckPasswordSignInAsync(currentUser, login.Password, false);
+
+            var data = await this.usersService.Authentication(login.Username);
+
+
+            if (!userLogin.Succeeded || data == null || !checkUser.Succeeded)
             {
                 return this.BadRequest(new {Message = "Username or password is incorrect"});
             }

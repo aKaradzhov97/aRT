@@ -2,8 +2,6 @@
 {
     using System.Threading.Tasks;
 
-    using aRT.Web.ViewModels.Users;
-
     public interface IUsersService
     {
         Task<bool> UsernameExists(string username);
@@ -12,6 +10,6 @@
 
         Task AddUserInRole(string id);
 
-        Task<string> Authentication(string username, string password);
+        Task<string> Authentication(string username);
     }
 }

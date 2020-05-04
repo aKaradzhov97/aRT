@@ -1,11 +1,10 @@
 ﻿// ReSharper disable VirtualMemberCallInConstructor
+
 namespace aRT.Data.Models
 {
     using System;
     using System.Collections.Generic;
-
     using aRT.Data.Common.Models;
-
     using Microsoft.AspNetCore.Identity;
 
     public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
@@ -28,6 +27,9 @@ namespace aRT.Data.Models
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }
+
+        // Jwt Token
+        public string Token { get; set; }
 
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 

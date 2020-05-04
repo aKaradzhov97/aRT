@@ -1,8 +1,8 @@
-using System;
-
 namespace aRT
 {
+    using System;
     using System.Reflection;
+    using System.Text;
     using aRT.Data;
     using aRT.Data.Common;
     using aRT.Data.Common.Repositories;
@@ -12,7 +12,9 @@ namespace aRT
     using aRT.Services.Data.ProductsService;
     using aRT.Services.Data.UsersService;
     using aRT.Services.Mapping;
+    using aRT.Web.Infrastructure.Jwt;
     using aRT.Web.ViewModels;
+    using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;
@@ -21,6 +23,7 @@ namespace aRT
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using Microsoft.IdentityModel.Tokens;
 
     public class Startup
     {
@@ -48,6 +51,35 @@ namespace aRT
                 })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
+
+            // Start Jwt Settings
+            // Jwt Token Service
+            var jwtSettingsSection = this.configuration.GetSection("JwtSettings");
+
+            services.Configure<JwtSettings>(jwtSettingsSection);
+
+            // Configure JWT authentication
+            var jwtSettings = jwtSettingsSection.Get<JwtSettings>();
+            var key = Encoding.UTF8.GetBytes(jwtSettings.Secret);
+            services.AddAuthentication(options =>
+                {
+                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                })
+                .AddJwtBearer(options =>
+                {
+                    options.RequireHttpsMetadata = false;
+                    options.SaveToken = true;
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(key),
+                        ValidateIssuer = false,
+                        ValidateAudience = false,
+                    };
+                });
+
+            // Finish JWT Settings
 
             // Expire default Cookie time
             services.ConfigureApplicationCookie(x => { x.ExpireTimeSpan = TimeSpan.FromDays(1); });

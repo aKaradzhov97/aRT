@@ -35,15 +35,14 @@
             }
 
             var userLogin = await this.signInManager.PasswordSignInAsync(login.Username, login.Password, true, false);
+            var user = await this.usersService.Authentication(login.Username, login.Password);
 
-            if (!userLogin.Succeeded)
+            if (!userLogin.Succeeded || user == null)
             {
-                return this.BadRequest("Invalid Username or password!");
+                return this.BadRequest(new {Message = "Username or password is incorrect"});
             }
 
-            var user = await this.userManager.GetUserAsync(this.User);
-
-            return this.Accepted(new {Message = $"{login.Username} is login!", user.UserName, user.Email});
+            return this.Ok(user.Token);
         }
 
         [HttpPost("Register")]

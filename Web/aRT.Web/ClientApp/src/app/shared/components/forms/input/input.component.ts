@@ -1,24 +1,14 @@
 // Decorators & Lifehooks
 import { Component, OnInit, Input, ViewChild, ElementRef, Self,  } from '@angular/core';
 import {
-  ControlValueAccessor, NG_VALUE_ACCESSOR, Validator, AbstractControl,
-  ValidatorFn, Validators, NG_VALIDATORS, NgControl
+  ControlValueAccessor, Validator, AbstractControl,
+  ValidatorFn, Validators, NgControl
 } from '@angular/forms';
 
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
-  // providers: [{
-  //   provide: NG_VALUE_ACCESSOR,
-  //   multi: true,
-  //   useExisting: InputComponent
-  // },
-  // {
-  //   provide: NG_VALIDATORS,
-  //   multi: true,
-  //   useExisting: InputComponent
-  // }]
 })
 export class InputComponent implements ControlValueAccessor, Validator, OnInit {
   @ViewChild('input') input: ElementRef;
@@ -30,6 +20,7 @@ export class InputComponent implements ControlValueAccessor, Validator, OnInit {
   @Input() label: string = null;
   @Input() placeholder: string;
   @Input() errorMsg: string;
+  @Input() isMaterialInput = true;
 
   constructor(@Self() public controlDir: NgControl) {
     this.controlDir.valueAccessor = this;
@@ -54,7 +45,11 @@ export class InputComponent implements ControlValueAccessor, Validator, OnInit {
   onTouched() { }
 
   writeValue(obj: any): void {
-    this.input.nativeElement.value = obj;
+    if (this.input) {
+      this.input.nativeElement.value = obj;
+    } else {
+      console.log('SOMETHING is wrong with our GENERIC INPUT!');
+    }
   }
   registerOnChange(fn: any): void {
     this.onChange = fn;

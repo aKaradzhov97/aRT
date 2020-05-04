@@ -12,10 +12,16 @@ import {AuthService} from '../../../../core/services/auth.service';
 export class HeaderComponent {
   @Output() public sidenavToggle = new EventEmitter();
   @Input() categories: any[] = [];
+  isSearchInputMaterial = false;
+
   constructor(private authService: AuthService) {
   }
 
   public onToggleSidenav = () => {
     this.sidenavToggle.emit();
+  }
+
+  onSubmit(f) {
+    console.log(f);
   }
 }

@@ -30,7 +30,14 @@
           </li>
         </ng-container>
       </ul>
-      <app-input class="d-none d-sm-block" type="text" placeholder="Search.." ngModel name="search"></app-input>
+      <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+        <app-input [isMaterialInput]="isSearchInputMaterial"
+                   [placeholder]="'Search..'"
+                   [type]="'search'"
+                   class="d-none d-sm-block"
+                   name="search" ngModel></app-input>
+        <button [disabled]="!f.valid" type="submit">Search</button>
+      </form>
     </section>
     <button id="toggle" class="d-flex justify-content-center align-items-center d-sm-none" mat-icon-button
             (click)="onToggleSidenav()">

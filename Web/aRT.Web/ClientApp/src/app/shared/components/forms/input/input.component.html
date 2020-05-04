@@ -1,4 +1,4 @@
-<mat-form-field class="form-label">
+<mat-form-field *ngIf="isMaterialInput">
   <mat-label *ngIf="label">{{label}}</mat-label>
   <input class="form-control"
          matInput
@@ -23,3 +23,27 @@
         *ngIf="controlDir && !controlDir.control.valid
      && controlDir.control.touched">{{errorMsg}}</span>
 </mat-form-field>
+
+<article *ngIf="!isMaterialInput">
+  <input #input
+         (blur)="onTouched()"
+         (input)="onChange($event.target.value)"
+         [disabled]="disabled"
+         [placeholder]="placeholder"
+         [type]="type"
+         class="form-control">
+  <div class="d-flex">
+   <span *ngIf="(isRequired && controlDir && controlDir.control.valid &&
+    controlDir.control.touched) || !isRequired && input.value.length > 0"
+         class="v">
+      <i class="far fa-check-circle"></i>
+    </span>
+
+    <label class="mr-auto">{{label}}
+      <span *ngIf="isRequired" class="required">*</span>
+    </label>
+  </div>
+  <span *ngIf="controlDir && !controlDir.control.valid
+     && controlDir.control.touched"
+        class="error">{{errorMsg}}</span>
+</article>

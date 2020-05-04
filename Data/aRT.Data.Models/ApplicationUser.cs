@@ -28,9 +28,6 @@ namespace aRT.Data.Models
 
         public DateTime? DeletedOn { get; set; }
 
-        // Jwt Token
-        public string Token { get; set; }
-
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 
         public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }

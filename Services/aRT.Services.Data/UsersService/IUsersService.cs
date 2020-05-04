@@ -1,7 +1,8 @@
 ﻿namespace aRT.Services.Data.UsersService
 {
     using System.Threading.Tasks;
-    using aRT.Data.Models;
+
+    using aRT.Web.ViewModels.Users;
 
     public interface IUsersService
     {
@@ -11,6 +12,6 @@
 
         Task AddUserInRole(string id);
 
-        Task<ApplicationUser> Authentication(string username, string password);
+        Task<string> Authentication(string username, string password);
     }
 }

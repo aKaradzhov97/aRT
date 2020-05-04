@@ -1,4 +1,6 @@
-﻿namespace aRT.Web.Controllers
+﻿using Renci.SshNet.Messages;
+
+namespace aRT.Web.Controllers
 {
     using System;
     using System.Threading.Tasks;
@@ -35,14 +37,14 @@
             }
 
             var userLogin = await this.signInManager.PasswordSignInAsync(login.Username, login.Password, true, false);
-            var user = await this.usersService.Authentication(login.Username, login.Password);
+            var data = await this.usersService.Authentication(login.Username, login.Password);
 
-            if (!userLogin.Succeeded || user == null)
+            if (!userLogin.Succeeded || data == null)
             {
                 return this.BadRequest(new {Message = "Username or password is incorrect"});
             }
 
-            return this.Ok(user.Token);
+            return this.Ok(new {Message = "Token", data});
         }
 
         [HttpPost("Register")]

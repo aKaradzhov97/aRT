@@ -7,9 +7,13 @@ import {RouterModule, Routes} from '@angular/router';
 // Guards
 
 // Components
-
+import {PanelComponent} from './containers/panel/panel.component';
 
 const ROUTES: Routes = [
+  {
+    path: 'panel',
+    component: PanelComponent,
+  },
   {
     path: 'category',
     loadChildren: () => import('./modules/category/category.module').then(m => m.CategoryModule)

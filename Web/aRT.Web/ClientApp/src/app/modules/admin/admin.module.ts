@@ -16,12 +16,15 @@ import {SharedModule} from '../../shared/shared.module';
 
 // Services
 import {UserService} from '../../core/services/user.service';
+import {PanelNavComponent} from './components/panel-nav/panel-nav.component';
+import {PanelComponent} from './containers/panel/panel.component';
 
 // Components
 
 @NgModule({
   declarations: [
-  ],
+    PanelNavComponent,
+    PanelComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

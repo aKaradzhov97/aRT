@@ -78,7 +78,7 @@ export class CategoriesEffect {
       ofType(categoryActions.UPDATE_CATEGORY_SUCCESS, categoryActions.DELETE_CATEGORY_SUCCESS),
       map((category: Category) => {
         return new fromRoot.Go({
-          path: ['/admin/category/all'],
+          path: ['/admin/category/all']
         });
       }),
     );

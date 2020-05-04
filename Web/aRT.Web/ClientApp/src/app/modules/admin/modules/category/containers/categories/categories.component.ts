@@ -1,12 +1,12 @@
 // Decorators & Lifehooks
 import {Component, OnInit} from '@angular/core';
 
-// RXJS
-import {Observable} from 'rxjs';
-
 // NGRX
 import {Store} from '@ngrx/store';
 import * as fromStore from '../../store';
+
+// RXJS
+import {Observable} from 'rxjs';
 
 // Models
 import {Category} from '../../../../../../shared/models/category.model';
@@ -25,9 +25,6 @@ export class CategoriesComponent implements OnInit {
 
   ngOnInit() {
     this.categories$ = this.store.select(fromStore.getAllCategories);
-    this.categories$.subscribe((data) => {
-      console.log(data);
-    });
+    this.store.dispatch(new fromStore.LoadCategories());
   }
-
 }

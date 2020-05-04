@@ -16,19 +16,21 @@ import {
 import {AuthService} from '../services/auth.service';
 
 @Injectable()
-export class HTTPInterceptor implements HttpInterceptor {
+export class JwtInterceptor implements HttpInterceptor {
 
   constructor(private authService: AuthService) {
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    request = request.clone({
-      setHeaders: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      withCredentials: true,
-    });
+    if (this.authService.isLoggedIn()) {
+      request = request.clone({
+        setHeaders: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + this.authService.getToken(),
+        }
+      });
+    }
 
     return next.handle(request);
   }

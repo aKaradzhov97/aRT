@@ -18,8 +18,8 @@ import {reducers, effects, CustomSerializer} from './store';
 import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
 
 // Interceptors
-import { HTTPInterceptor } from './core/interceptors/http.interceptor';
-import { SuccessInterceptor } from './core/interceptors/success.interceptor';
+import {JwtInterceptor} from './core/interceptors/jwt.interceptor';
+import {SuccessInterceptor} from './core/interceptors/success.interceptor';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 
 // Components
@@ -57,7 +57,7 @@ export const metaReducers: MetaReducer<any>[] = [];
     },
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: HTTPInterceptor,
+      useClass: JwtInterceptor,
       multi: true
     },
     {

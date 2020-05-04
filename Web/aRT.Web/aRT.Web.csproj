@@ -42,6 +42,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ClientApp\src\app\modules\admin\components"/>
     <Folder Include="ClientApp\src\app\modules\admin\containers" />
     <Folder Include="ClientApp\src\app\modules\admin\guards" />
     <Folder Include="ClientApp\src\app\modules\admin\modules\category\components" />

@@ -1,3 +1,5 @@
+using aRT.Services.Data.CategoriesService;
+
 namespace aRT
 {
     using System;
@@ -99,6 +101,7 @@ namespace aRT
             // Add Service
             services.AddTransient<IUsersService, UsersService>();
             services.AddTransient<IProductsService, ProductsService>();
+            services.AddTransient<ICategoriesService, CategoriesService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

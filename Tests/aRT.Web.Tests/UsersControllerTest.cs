@@ -1,15 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using aRT.Data.Common.Repositories;
-using aRT.Data.Models;
 using aRT.Services.Data.UsersService;
 using aRT.Web.Controllers;
-using aRT.Web.Infrastructure.Jwt;
 using aRT.Web.ViewModels.Users;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using Xunit;
 
 namespace aRT.Web.Tests
